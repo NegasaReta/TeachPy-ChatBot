@@ -16,10 +16,11 @@ except (KeyError, FileNotFoundError):
 
 # --- Redis Configuration ---
 try:
-    redis_url = st.secrets["REDIS_URL"]  # stored securely in secrets.toml
-    redis_client = redis.from_url(redis_url, decode_responses=True)
+    redis_url = st.secrets["REDIS_URL"]
+    redis_client = redis.from_url(redis_url, decode_responses=True, ssl=True)
     redis_client.ping()
-except (KeyError, redis.exceptions.ConnectionError) as e:
+    st.success("Connected to Redis!")
+except Exception as e:
     st.error(f"Could not connect to Redis: {e}")
     st.info("Please ensure REDIS_URL is correctly set in your Streamlit secrets.")
     st.stop()
