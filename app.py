@@ -157,7 +157,7 @@ def get_all_sessions():
     for session_id, session_data in redis_client.hgetall(CHAT_SESSIONS_KEY).items():
         session = json.loads(session_data)
         sessions.append({
-            "id": session_id.decode('utf-8'),
+            "id": session_id,
             "title": session["title"],
             "created_at": session["created_at"],
             "message_count": len(session["messages"])
@@ -169,7 +169,7 @@ def delete_session(session_id):
     """Deletes a chat session"""
     redis_client.hdel(CHAT_SESSIONS_KEY, session_id)
     current_session = redis_client.get(CURRENT_SESSION_KEY)
-    if current_session and current_session.decode('utf-8') == session_id:
+    if current_session and current_session == session_id:
         redis_client.delete(CURRENT_SESSION_KEY)
 
 # --- Streamlit App ---
