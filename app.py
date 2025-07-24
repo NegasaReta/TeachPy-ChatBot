@@ -131,7 +131,7 @@ def get_current_session():
     session_id = redis_client.get(CURRENT_SESSION_KEY)
     if not session_id:
         return create_new_session()
-    return session_id.decode('utf-8')
+    return session_id
 
 def get_session_messages(session_id):
     """Retrieves messages for a specific session"""
