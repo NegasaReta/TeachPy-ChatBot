@@ -183,35 +183,6 @@ def main():
     .sidebar .sidebar-content {
         width: 300px;
     }
-    .marquee {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: #f0f2f6;
-            padding: 10px 0;
-            text-align: center;
-            font-size: 14px;
-            color: #555;
-            border-top: 1px solid #ddd;
-            z-index: 1000;
-        }
-        .marquee-content {
-            animation: marquee 15s linear infinite;
-            display: inline-block;
-            padding-left: 100%;
-        }
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
-        }
-        </style>
-        
-        <div class="marquee">
-            <div class="marquee-content">
-                🚀 Developed by Negasa Reta, July 2025 | Python Tutor Chatbot | 🐍 TeachPy
-            </div>
-        </div>
     """,
     unsafe_allow_html=True
     )
