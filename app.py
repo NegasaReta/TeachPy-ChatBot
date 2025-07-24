@@ -17,7 +17,7 @@ except (KeyError, FileNotFoundError):
 # --- Redis Configuration ---
 try:
     redis_url = st.secrets["REDIS_URL"]
-    redis_client = redis.from_url(redis_url, decode_responses=True, ssl=True)
+    redis_client = redis.from_url(redis_url, decode_responses=True)
     redis_client.ping()
     st.success("Connected to Redis!")
 except Exception as e:
